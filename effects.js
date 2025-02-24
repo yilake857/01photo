@@ -132,6 +132,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastMoveTime = 0;
     const moveThrottle = 16; // 约60fps的采样率
 
+    // 音乐控制
+    const musicBtn = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+    let isMusicPlaying = false;
+
+    // 设置音乐音量
+    bgMusic.volume = 0.5; // 设置为50%音量
+
+    musicBtn.addEventListener('click', () => {
+        if (isMusicPlaying) {
+            bgMusic.pause();
+            musicBtn.classList.add('paused');
+        } else {
+            bgMusic.play();
+            musicBtn.classList.remove('paused');
+        }
+        isMusicPlaying = !isMusicPlaying;
+    });
+
+    // 监听音乐加载完成事件
+    bgMusic.addEventListener('canplaythrough', () => {
+        musicBtn.style.display = 'block';
+    });
+
+    // 处理音乐播放错误
+    bgMusic.addEventListener('error', () => {
+        console.log('背景音乐加载失败');
+        musicBtn.style.display = 'none';
+    });
+
     // 创建爱心
     function createHeart() {
         if (Math.random() < 0.1) { // 控制爱心生成频率

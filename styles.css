@@ -86,4 +86,51 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 0;
+}
+
+/* 添加音乐控制器样式 */
+.music-controller {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.music-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.music-btn .play-icon {
+    font-size: 24px;
+    color: #ff69b4;
+    animation: musicRotate 3s linear infinite;
+}
+
+@keyframes musicRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 暂停时停止动画 */
+.music-btn.paused .play-icon {
+    animation-play-state: paused;
 } 
