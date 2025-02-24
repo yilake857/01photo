@@ -14,6 +14,7 @@ body {
     height: 600px;
     position: relative;
     transform-style: preserve-3d;
+    z-index: 1;
 }
 
 .photo-container {
@@ -74,4 +75,15 @@ body {
         width: 120px;
         height: 168px;
     }
+}
+
+/* 添加canvas样式 */
+#heartCanvas, #cursorCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
 } 
