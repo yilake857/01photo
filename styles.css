@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #ffd1d9, #ffe0e6, #ffc2cb);
+    perspective: 2000px;
+    overflow: hidden;
+}
+
+.kaleidoscope {
+    width: 800px;
+    height: 600px;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.photo-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    cursor: grab;
+}
+
+.photo {
+    position: absolute;
+    width: 200px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transform-origin: center;
+    border: 8px solid white;
+    z-index: 1;
+}
+
+.photo:active {
+    cursor: grabbing;
+}
+
+@keyframes autoRotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .kaleidoscope {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .photo {
+        width: 150px;
+        height: 210px;
+        border: 5px solid white;
+    }
+
+    .photo-container {
+        touch-action: none;
+    }
+}
+
+@media (max-width: 896px) and (orientation: landscape) {
+    .photo {
+        width: 120px;
+        height: 168px;
+    }
+} 
